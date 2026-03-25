@@ -221,7 +221,7 @@ export function ProjectCarousel({ images, projectName }: ProjectCarouselProps) {
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
                 aria-label="Imagen anterior"
               >
-                <ChevronLeft size={28} className="text-white" />
+                <ChevronLeft size={28} className="text-gray-800" />
               </button>
               <button
                 onClick={(e) => {
@@ -231,7 +231,7 @@ export function ProjectCarousel({ images, projectName }: ProjectCarouselProps) {
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
                 aria-label="Siguiente imagen"
               >
-                <ChevronRight size={28} className="text-white" />
+                <ChevronRight size={28} className="text-gray-800" />
               </button>
             </motion.div>
 
