@@ -14,6 +14,7 @@ export function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -26,17 +27,41 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envio del formulario
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const response = await fetch("https://formspree.io/f/xlgorjzd",{
+        method:'POST',
+        headers:{
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        },
+        body:JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        })
+      });  
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+      if (response.ok) {
+
+       setIsSubmitted(true);
+
+       setTimeout(()=>{
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+
+       },3000);
+
+      }else{
+        setError("Hubo un error al enviar el formulario. Inténtalo de nuevo.");
+      }
+    } catch (error) {
+      setError("Error de conexion. Inténtalo mas tarde o envia directamente un correo");
+    } finally {
+      setIsSubmitting(false);
+    }
+
   };
 
   return (
@@ -204,6 +229,11 @@ export function ContactSection() {
               {isSubmitted && (
                 <p className="text-center text-sm text-primary">
                   Gracias por tu mensaje. Te respondere lo antes posible.
+                </p>
+              )}
+              {error && (
+                <p className="text-center text-sm text-red-500">
+                  {error}
                 </p>
               )}
             </form>
