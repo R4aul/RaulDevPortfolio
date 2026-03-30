@@ -8,16 +8,6 @@ export function HeroSection() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Column - Info */}
         <div className="space-y-8">
-          {/* Profile Photo */}
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/10">
-            <Image
-              src="/images/profile.jpg"
-              alt="Raul Damian Rafael"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
 
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground text-balance">
