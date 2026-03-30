@@ -9,23 +9,23 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Raul Damian Rafael | Backend Developer',
   description: 'Backend Developer especializado en Laravel y Spring Boot. Desarrollo de APIs REST, sistemas escalables y soluciones empresariales.',
-  generator: 'v0.app',
+  generator: 'Raul Dev Portfolio',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/web/icon-32x32.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/web/icon-32x32.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/web/icon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/web/apple-icon.png',
   },
 }
 
