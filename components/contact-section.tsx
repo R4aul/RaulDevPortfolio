@@ -84,12 +84,6 @@ export function ContactSection() {
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-6">
               <ContactLink
-                icon={Mail}
-                label="Email"
-                value="raul.damian220@gmail.com"
-                href="mailto:raul.damian220@gmail.com"
-              />
-              <ContactLink
                 icon={Github}
                 label="GitHub"
                 value="github.com/R4aul"

@@ -51,13 +51,6 @@ export function HeroSection() {
             >
               <Linkedin size={20} />
             </Link>
-            <Link
-              href="mailto:raul.damian220@gmail.com"
-              className="p-3 rounded-lg bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </Link>
           </div>
 
           {/* CTA */}
