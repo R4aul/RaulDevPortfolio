@@ -1,5 +1,11 @@
-import { Server, Database } from "lucide-react";
+import { Server, Database, Github, Layout, ServerCog } from "lucide-react";
 import { ProjectCarousel } from "./project-carousel";
+
+interface GitHubLinks {
+  fullstack?:string,
+  frontend?:string
+  backend?:string
+}
 
 const projects = [
   {
@@ -23,6 +29,9 @@ const projects = [
       "/images/e-karpay/c-courses-create.png",
       "/images/e-karpay/c-progress.png",
     ],
+    github:{
+      fullstack: "https://github.com/R4aul/app-project-spei"
+    } as GitHubLinks
   },
   {
     title: "Sistema de Gestion de Dividendos",
@@ -44,6 +53,9 @@ const projects = [
       "/images/g-rhemas/s-users.png",
       "/images/g-rhemas/s-users-create.png",
     ],
+    github:{
+      fullstack: "https://github.com/R4aul/grupo-rhemas-app"
+    } as GitHubLinks
   },
 ];
 
@@ -70,6 +82,30 @@ export function ProjectsSection() {
   );
 }
 
+function GitHubButton({
+  href,
+  label,
+  icon: Icon,
+}: {
+  href: string;
+  label: string;
+  icon: typeof Github;
+}) {
+  if (!href) return null;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary border border-border text-sm font-medium text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+    >
+      <Icon size={16} />
+      {label}
+    </a>
+  );
+}
+
 function ProjectCard({
   title,
   company,
@@ -78,6 +114,7 @@ function ProjectCard({
   technologies,
   icon: Icon,
   images,
+  github,
   isReversed,
 }: {
   title: string;
@@ -87,8 +124,12 @@ function ProjectCard({
   technologies: string[];
   icon: typeof Server;
   images: string[];
+  github: GitHubLinks;
   isReversed: boolean;
 }) {
+
+  const hasGitHubLinks = github.fullstack || github.frontend || github.backend;
+
   return (
     <article className={`grid lg:grid-cols-2 gap-8 items-center ${isReversed ? "lg:flex-row-reverse" : ""}`}>
       {/* Image Carousel */}
@@ -146,6 +187,34 @@ function ProjectCard({
             </span>
           ))}
         </div>
+
+        {/* GitHub Links */}
+        {hasGitHubLinks && (
+          <div className="flex flex-wrap gap-3 pt-2">
+            {github.fullstack && (
+              <GitHubButton
+                href={github.fullstack}
+                label="Ver Codigo"
+                icon={Github}
+              />
+            )}
+            {github.frontend && (
+              <GitHubButton
+                href={github.frontend}
+                label="Frontend"
+                icon={Layout}
+              />
+            )}
+            {github.backend && (
+              <GitHubButton
+                href={github.backend}
+                label="Backend"
+                icon={ServerCog}
+              />
+            )}
+          </div>
+        )}
+
       </div>
     </article>
   );
